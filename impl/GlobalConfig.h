@@ -9,6 +9,13 @@ enum LANG {
 
 class GlobalConfig {
 public:
+  static const GlobalConfig& GetInstance();
+  void Print();
+
+private:
   LANG lang;
+  static GlobalConfig INSTANCE;
+
+  GlobalConfig();
 };
 #endif //GLOBALCONFIG_H
