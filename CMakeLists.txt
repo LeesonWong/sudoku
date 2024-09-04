@@ -3,7 +3,8 @@ project(sudoku)
 
 set(CMAKE_CXX_STANDARD 17)
 
-message("CMAKE_PROJECT_NAME ${CMAKE_PROJECT_NAME}")
-message("PROJECT_NAME ${PROJECT_NAME}")
+include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/modules/include)
+
+add_subdirectory(modules)
 
 add_executable(${CMAKE_PROJECT_NAME} main.cpp)
