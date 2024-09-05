@@ -37,6 +37,7 @@ void Game::Process() {
       this->ComputedProcess();
       break;
     case OVER:
+      // here is impossible in principle
       this->OverProcess();
       break;
     default:
@@ -49,13 +50,12 @@ void Game::Start() {
   std::cout << "\t" << "Game Start" << std::endl;
   std::cout << "\t" << "Exit" << std::endl;
 
-  std::string str;
-  std::cin >> str;
+  std::cin >> this->operation;
   while (true) {
-    if(str == "1") {
+    if(this->operation == "1") {
       this->MenuProcess();
       return;
-    } else if (str == "2") {
+    } else if (this->operation == "2") {
       this->OverProcess();
       return;
     }
@@ -64,17 +64,16 @@ void Game::Start() {
 
 void Game::MenuProcess() {
   this->State = MENU;
-  Util::LOG("è¯·è¾“å…¥çŸ©é˜µå¤§å°ï¼š3 * X");
-  std::string str;
-  std::cin >> str;
-  sudoku = std::make_unique<Sudoku>(std::stoi(str));
+  std::cout << "ÇëÊäÈë¾ØÕó´óÐ¡£º3 * X" << std::endl;
+  std::cin >> this->operation;
+  sudoku = std::make_unique<Sudoku>(std::stoi(this->operation));
 }
 
 void Game::PlayingProcess() {
   if(!sudoku) {
-    Util::LOG("Playing illegal state");
+    std::cout << "Playing illegal state" << std::endl;
   }
-  Util::LOG("Playing sudoku");
+  std::cout << "Playing sudoku" << std::endl;
 }
 
 void Game::ComputedProcess() {
@@ -82,5 +81,6 @@ void Game::ComputedProcess() {
 }
 
 void Game::OverProcess() {
-  // é‡Šæ”¾èµ„æº
+  // ÊÍ·Å×ÊÔ´
+  this->State = OVER;
 }

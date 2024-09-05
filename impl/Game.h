@@ -2,6 +2,7 @@
 #define GAME_H
 #include "Sudoku.h"
 #include <string>
+#include <memory>
 
 enum GameState {
   INIT,
@@ -25,6 +26,7 @@ public:
 
   void Process();
 private:
+  std::string operation;
   // 是否已结束游戏对象生命周期
   GameState State;
   std::unique_ptr<Sudoku> sudoku;
