@@ -1,14 +1,22 @@
-#include <iostream>
+#include <Game.h>
+#include <chrono>
 
-#include <Sudoku.h>
 #include <GlobalConfig.h>
+#include <Util.h>
+#include <iostream>
 
 using namespace std;
 
 int main() {
-  // Sudoku sudoku;
-  auto config = GlobalConfig::GetInstance();
-  config.Print();
+  Game game;
+  std::string str;
 
-  cout << "Hello World!" << endl;
+  Util::LOG("选择语言 1、中文 2、英文");
+  std::cin >> str;
+  Util::LOG(str);
+
+  while (!game.IsOver()) {
+    game.Process();
+  }
+  Util::LOG("Game Over");
 }
