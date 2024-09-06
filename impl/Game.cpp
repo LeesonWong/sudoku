@@ -12,6 +12,10 @@ Game::Game() : State(INIT) {}
 
 Game::~Game() {}
 
+bool CheckSize(const int& size) {
+  return size == 3;
+}
+
 bool Game::IsOver() {
   // sleep for SLEEP_SLOT
   std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_SLOT));
@@ -66,7 +70,11 @@ void Game::MenuProcess() {
   this->State = MENU;
   std::cout << "请输入矩阵大小：3 * X" << std::endl;
   std::cin >> this->operation;
-  sudoku = std::make_unique<Sudoku>(std::stoi(this->operation));
+  int size = std::stoi(this->operation);
+  if(CheckSize(size)) {
+    std::cout << "Size Error" << std::endl;
+  }
+  sudoku = std::make_unique<Sudoku>(size);
 }
 
 void Game::PlayingProcess() {
@@ -74,8 +82,13 @@ void Game::PlayingProcess() {
     std::cout << "Playing illegal state" << std::endl;
   }
   std::cout << "Playing sudoku" << std::endl;
-  sudoku->temp++;
-  if(sudoku->temp >= 3) {
+  std::cout << "请输入行、列、数字" ;
+  int x;
+  int y;
+  int num;
+  std::cin >> x >> y >> num;
+
+  if(sudoku->Check()) {
     this->State = COMPUTED;
   }
 }
