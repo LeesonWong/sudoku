@@ -20,6 +20,7 @@ Sudoku::~Sudoku() {}
 void Sudoku::Place(uint16_t, uint16_t, uint8_t) {}
 
 bool Sudoku::Check() {
-  this->temp++;
-  return this->temp >= 3;
+  // this->temp++;
+  // return this->temp >= 3;
+  return false;
 }

@@ -11,7 +11,7 @@ int main() {
   Game game;
   std::string str;
 
-  std::cout << "Ñ¡ÔñÓïÑÔ 1¡¢ÖĞÎÄ 2¡¢Ó¢ÎÄ" << std::endl;
+  std::cout << "é€‰æ‹©è¯­è¨€ 1ã€ä¸­æ–‡ 2ã€è‹±æ–‡" << std::endl;
   std::cin >> str;
   // Util::LOG(str);
 

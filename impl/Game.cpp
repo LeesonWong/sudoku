@@ -47,8 +47,8 @@ void Game::Process() {
 }
 
 void Game::Start() {
-  std::cout << "1¡¢Game Start" << std::endl;
-  std::cout << "2¡¢Exit" << std::endl;
+  std::cout << "1ã€Game Start" << std::endl;
+  std::cout << "2ã€Exit" << std::endl;
 
   std::cin >> this->operation;
   while (true) {
@@ -64,11 +64,12 @@ void Game::Start() {
 
 void Game::MenuProcess() {
   this->State = MENU;
-  std::cout << "ÇëÊäÈë¾ØÕó´óÐ¡£º3 * X" << std::endl;
+  std::cout << "è¯·è¾“å…¥çŸ©é˜µå¤§å°ï¼š3 * X" << std::endl;
   std::cin >> this->operation;
   int size = std::stoi(this->operation);
   if (!CheckSize(size)) {
     std::cout << "Size Error" << std::endl;
+    return;
   }
   sudoku = std::make_unique<Sudoku>(size);
   this->State = PLAYING;
@@ -78,8 +79,7 @@ void Game::PlayingProcess() {
   if (!sudoku) {
     std::cout << "Playing illegal state" << std::endl;
   }
-  std::cout << "Playing sudoku" << std::endl;
-  std::cout << "ÇëÊäÈëÐÐ¡¢ÁÐ¡¢Êý×Ö";
+  std::cout << "è¯·è¾“å…¥è¡Œã€åˆ—ã€æ•°å­—" << std::endl;
   int x;
   int y;
   int num;
@@ -93,6 +93,6 @@ void Game::PlayingProcess() {
 void Game::ComputedProcess() { this->MenuProcess(); }
 
 void Game::OverProcess() {
-  // ÊÍ·Å×ÊÔ´
+  // é‡Šæ”¾èµ„æº
   this->State = OVER;
 }
