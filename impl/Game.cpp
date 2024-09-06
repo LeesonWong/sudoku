@@ -51,8 +51,8 @@ void Game::Process() {
 
 
 void Game::Start() {
-  std::cout << "Game Start" << std::endl;
-  std::cout << "Exit" << std::endl;
+  std::cout << "1¡¢Game Start" << std::endl;
+  std::cout << "2¡¢Exit" << std::endl;
 
   std::cin >> this->operation;
   while (true) {
@@ -71,7 +71,7 @@ void Game::MenuProcess() {
   std::cout << "ÇëÊäÈë¾ØÕó´óÐ¡£º3 * X" << std::endl;
   std::cin >> this->operation;
   int size = std::stoi(this->operation);
-  if(CheckSize(size)) {
+  if(!CheckSize(size)) {
     std::cout << "Size Error" << std::endl;
   }
   sudoku = std::make_unique<Sudoku>(size);
