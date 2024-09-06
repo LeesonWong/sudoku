@@ -14,7 +14,7 @@ enum GameState {
 extern const int SLEEP_SLOT;
 
 /**
-* Game本质上是一个有限状态机 对外只需要关心game是否结束，
+* Game本质上是一个有限状态机 对外只需要关心game是否结束
 */
 class Game {
 public:
