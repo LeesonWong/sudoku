@@ -1,6 +1,19 @@
 #include "Sudoku.h"
 
-Sudoku::Sudoku(const uint8_t len) : temp(0) { this->partLen = len; }
+Sudoku::Sudoku(const uint8_t len) : temp(0) {
+  this->partLen = len;
+  data = {
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+  };
+}
 
 Sudoku::~Sudoku() {}
 

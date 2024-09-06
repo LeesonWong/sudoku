@@ -71,6 +71,7 @@ void Game::MenuProcess() {
     std::cout << "Size Error" << std::endl;
   }
   sudoku = std::make_unique<Sudoku>(size);
+  this->State = PLAYING;
 }
 
 void Game::PlayingProcess() {
