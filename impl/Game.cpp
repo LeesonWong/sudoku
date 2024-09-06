@@ -1,9 +1,9 @@
-#include <thread>
-#include <iostream>
 #include <chrono>
+#include <iostream>
+#include <thread>
 
-#include "Util.h"
 #include "Game.h"
+#include "Util.h"
 
 // 500ms
 const int SLEEP_SLOT = 100;
@@ -12,43 +12,39 @@ Game::Game() : State(INIT) {}
 
 Game::~Game() {}
 
-bool CheckSize(const int& size) {
-  return size == 3;
-}
+bool CheckSize(const int &size) { return size == 3; }
 
 bool Game::IsOver() {
   // sleep for SLEEP_SLOT
   std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_SLOT));
   auto res = this->State == OVER;
-  if(res) {
-
+  if (res) {
   }
   return res;
 }
 
 void Game::Process() {
   switch (this->State) {
-    case INIT:
-      this->Start();
-      break;
-    case MENU:
-      this->MenuProcess();
-      break;
-    case PLAYING:
-      this->PlayingProcess();
-      break;
-    case COMPUTED:
-      this->ComputedProcess();
-      break;
-    case OVER:
-      // here is impossible in principle
-      this->OverProcess();
-      break;
-    default:
-      break;
+  case INIT:
+    this->Start();
+    break;
+  case MENU:
+    this->MenuProcess();
+    break;
+  case PLAYING:
+    this->PlayingProcess();
+    break;
+  case COMPUTED:
+    this->ComputedProcess();
+    break;
+  case OVER:
+    // here is impossible in principle
+    this->OverProcess();
+    break;
+  default:
+    break;
   }
 }
-
 
 void Game::Start() {
   std::cout << "1、Game Start" << std::endl;
@@ -56,7 +52,7 @@ void Game::Start() {
 
   std::cin >> this->operation;
   while (true) {
-    if(this->operation == "1") {
+    if (this->operation == "1") {
       this->MenuProcess();
       return;
     } else if (this->operation == "2") {
@@ -71,31 +67,29 @@ void Game::MenuProcess() {
   std::cout << "请输入矩阵大小：3 * X" << std::endl;
   std::cin >> this->operation;
   int size = std::stoi(this->operation);
-  if(!CheckSize(size)) {
+  if (!CheckSize(size)) {
     std::cout << "Size Error" << std::endl;
   }
   sudoku = std::make_unique<Sudoku>(size);
 }
 
 void Game::PlayingProcess() {
-  if(!sudoku) {
+  if (!sudoku) {
     std::cout << "Playing illegal state" << std::endl;
   }
   std::cout << "Playing sudoku" << std::endl;
-  std::cout << "请输入行、列、数字" ;
+  std::cout << "请输入行、列、数字";
   int x;
   int y;
   int num;
   std::cin >> x >> y >> num;
 
-  if(sudoku->Check()) {
+  if (sudoku->Check()) {
     this->State = COMPUTED;
   }
 }
 
-void Game::ComputedProcess() {
-  this->MenuProcess();
-}
+void Game::ComputedProcess() { this->MenuProcess(); }
 
 void Game::OverProcess() {
   // 释放资源

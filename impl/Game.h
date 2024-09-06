@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 #include "Sudoku.h"
-#include <string>
 #include <memory>
+#include <string>
 
 enum GameState {
   INIT,
@@ -14,8 +14,8 @@ enum GameState {
 extern const int SLEEP_SLOT;
 
 /**
-* Game本质上是一个有限状态机 对外只需要关心game是否结束
-*/
+ * Game本质上是一个有限状态机 对外只需要关心game是否结束
+ */
 class Game {
 public:
   Game();
@@ -25,6 +25,7 @@ public:
   bool IsOver();
 
   void Process();
+
 private:
   std::string operation;
   // 是否已结束游戏对象生命周期
