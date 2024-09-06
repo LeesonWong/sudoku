@@ -9,7 +9,6 @@ class Util {
 public:
   static void LOG(const std::string &msg) {
     std::cout << GetDateTime() << "\t" << msg << std::endl;
-    std::cout << "------------------------------------------------------" << std::endl;
   }
 
   static std::string GetDateTime() {

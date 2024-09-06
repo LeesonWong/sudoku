@@ -1,5 +1,11 @@
 #include "Sudoku.h"
 
-Sudoku::Sudoku(uint8_t  len) {
-  this->partLen = len;
+Sudoku::Sudoku(const uint8_t len) : temp(0) { this->partLen = len; }
+
+Sudoku::~Sudoku() {}
+
+void Sudoku::Place(uint16_t, uint16_t, uint8_t) {}
+
+bool Sudoku::Check() {
+  return true;
 }

@@ -13,7 +13,7 @@ int main() {
 
   std::cout << "选择语言 1、中文 2、英文" << std::endl;
   std::cin >> str;
-  Util::LOG(str);
+  // Util::LOG(str);
 
   while (!game.IsOver()) {
     game.Process();

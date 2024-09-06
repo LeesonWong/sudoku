@@ -47,8 +47,8 @@ void Game::Process() {
 
 
 void Game::Start() {
-  std::cout << "\t" << "Game Start" << std::endl;
-  std::cout << "\t" << "Exit" << std::endl;
+  std::cout << "Game Start" << std::endl;
+  std::cout << "Exit" << std::endl;
 
   std::cin >> this->operation;
   while (true) {
@@ -74,6 +74,10 @@ void Game::PlayingProcess() {
     std::cout << "Playing illegal state" << std::endl;
   }
   std::cout << "Playing sudoku" << std::endl;
+  sudoku->temp++;
+  if(sudoku->temp >= 3) {
+    this->State = COMPUTED;
+  }
 }
 
 void Game::ComputedProcess() {
