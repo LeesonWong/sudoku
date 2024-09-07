@@ -1,8 +1,13 @@
 #include "Sudoku.h"
+#include <iostream>
 
-Sudoku::Sudoku(const uint8_t len) : temp(0) {
+std::set<std::pair<int, int>> CreateBoard(std::vector<std::vector<int>>& data) {
+
+}
+
+Sudoku::Sudoku(const uint8_t len) {
   this->partLen = len;
-  data = {
+  this->data = {
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -13,14 +18,30 @@ Sudoku::Sudoku(const uint8_t len) : temp(0) {
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
   };
+  pos = CreateBoard(this->data);
 }
 
 Sudoku::~Sudoku() {}
 
-void Sudoku::Place(uint16_t, uint16_t, uint8_t) {}
+bool Sudoku::Place(int x, int y, int num) {
+  if(this->pos.find(std::pair(x, y)) != this->pos.end()) {
+    return false;
+  }
+  data[x][y] = num;
+  return true;
+}
 
 bool Sudoku::Check() {
-  // this->temp++;
-  // return this->temp >= 3;
-  return false;
+  bool res = true;
+
+  return res;
+}
+
+void Sudoku::Show() {
+  for (const auto& row : data) {
+    for (auto item : row) {
+      std::cout << item << " ";
+    }
+    std::cout << std::endl;
+  }
 }

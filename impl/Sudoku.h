@@ -2,16 +2,18 @@
 #define SUDOKU_H
 #include <cstdint>
 #include <vector>
+#include <set>
+
 class Sudoku {
 public:
   Sudoku(uint8_t);
   ~Sudoku();
-  void Place(uint16_t, uint16_t, uint8_t);
+  bool Place(int, int, int);
   bool Check();
-  int temp;
-
+  void Show();
 private:
   uint8_t partLen;
-  std::vector<std::vector<uint8_t>> data;
+  std::vector<std::vector<int>> data;
+  std::set<std::pair<int, int>> pos;
 };
 #endif // SUDOKU_H

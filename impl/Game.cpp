@@ -80,10 +80,12 @@ void Game::PlayingProcess() {
     std::cout << "Playing illegal state" << std::endl;
   }
   std::cout << "请输入行、列、数字" << std::endl;
-  int x;
-  int y;
+  uint16_t x;
+  uint16_t y;
   int num;
+  sudoku->Show();
   std::cin >> x >> y >> num;
+  sudoku->Place(x, y, num);
 
   if (sudoku->Check()) {
     this->State = COMPUTED;
