@@ -99,19 +99,39 @@ bool Sudoku::Check() {
   std::set<int> set1;
   std::set<int> set2;
   std::set<int> set3;
+
   for (int i = 0; i < this->partLen * 3; i++) {
+    set1.clear();
     for (int j = 0; j < this->partLen * 3; j++) {
       auto num = this->data[i][j];
-      if(this->data[i][j] == 0) {
+      if(checkSet.find(num) == checkSet.end() || set1.find(num) != set1.end()) {
         return false;
       }
-      if (checkSet.find(num) != checkSet.end() && set1.find(data[i][j]) == set1.end()) {
-
+      set1.insert(num);
+    }
+  }
+  for (int i = 0; i < this->partLen * 3; i++) {
+    set2.clear();
+    for (int j = 0; j < this->partLen * 3; j++) {
+      auto num = this->data[j][i];
+      if(checkSet.find(num) == checkSet.end() || set2.find(num) != set2.end()) {
+        return false;
       }
+      set2.insert(num);
     }
   }
   for (int i = 0; i < this->partLen; i++) {
     for (int j = 0; j < this->partLen; j++) {
+      set3.clear();
+      for (int x = 0; x < 3; x++) {
+        for (int y = 0; y < 3; y++) {
+          auto num = this->data[i * 3 + x][j * 3 + y];
+          if(checkSet.find(num) == checkSet.end() || set3.find(num) != set3.end()) {
+            return false;
+          }
+          set3.insert(num);
+        }
+      }
     }
   }
 
