@@ -64,9 +64,10 @@ void Game::Start() {
 
 void Game::MenuProcess() {
   this->State = MENU;
-  std::cout << "请输入矩阵大小：3 * X" << std::endl;
-  std::cin >> this->operation;
-  int size = std::stoi(this->operation);
+  // std::cout << "请输入矩阵大小：3 * X" << std::endl;
+  // std::cin >> this->operation;
+  // int size = std::stoi(this->operation);
+  int size = 3;
   if (!CheckSize(size)) {
     std::cout << "Size Error" << std::endl;
     return;

@@ -1,8 +1,9 @@
 #ifndef SUDOKU_H
 #define SUDOKU_H
 #include <cstdint>
-#include <vector>
+#include <map>
 #include <set>
+#include <vector>
 
 class Sudoku {
 public:
@@ -15,5 +16,8 @@ private:
   uint8_t partLen;
   std::vector<std::vector<int>> data;
   std::set<std::pair<int, int>> pos;
+  std::set<int> checkSet;
+
+  std::set<std::pair<int, int>> CreateBoard(std::vector<std::vector<int>>& data);
 };
 #endif // SUDOKU_H
